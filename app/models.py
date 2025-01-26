@@ -21,8 +21,8 @@ class Tarea(db.Model):
     __tablename__ = 'tareas'
     id = db.Column(db.Integer, primary_key=True)
     texto_area = db.Column(db.String(255), nullable=False)
-    fecha_creacion = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
-    fecha_tentativa_finalizacion = db.Column(db.DateTime, nullable=False)
+    fecha_creacion = db.Column(db.DateTime(timezone=True), nullable=False, default=lambda: datetime.now())
+    fecha_tentativa_finalizacion = db.Column(db.DateTime(timezone=True), nullable=False)
     estado = db.Column(Enum('Sin Empezar', 'En Proceso', 'Completado', name='estado_tarea'),nullable=False,default='Sin Empezar')
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     categoria_id = db.Column(db.Integer, db.ForeignKey('categorias.id'), nullable=True)
