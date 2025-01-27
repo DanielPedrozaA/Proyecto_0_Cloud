@@ -11,7 +11,8 @@ services:
       - SQLALCHEMY_DATABASE_URI=postgresql://task_user:password@db/task_manager
       - JWT_SECRET_KEY=jwt_clave_secreta
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: postgres:14
@@ -21,3 +22,8 @@ services:
       POSTGRES_DB: task_manager
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U task_user"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
