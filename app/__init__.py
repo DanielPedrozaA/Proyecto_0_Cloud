@@ -25,6 +25,7 @@ def create_app():
         return "¡Bienvenido a la API de Proyecto 0 Cloud!"
     
     with app.app_context():
+        print("SQLALCHEMY_DATABASE_URI:", app.config['SQLALCHEMY_DATABASE_URI'])
         db.create_all()
 
     return app
