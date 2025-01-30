@@ -27,3 +27,12 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+
+  front:
+    build:
+      context: ./frontend
+    container_name: frontBonito
+    ports:
+      - "3000:3000"
+    depends_on:
+      - web

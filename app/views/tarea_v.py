@@ -15,11 +15,30 @@ def crear_tarea(data):
         return {'mensaje': 'Usuario no encontrado'}, 404
 
     fecha_actual = datetime.now(timezone.utc)
-    fecha_tentativa = datetime.fromisoformat(data['fecha_tentativa_finalizacion'])
+    try:
+        fecha_tentativa = datetime.fromisoformat(data['fecha_tentativa_finalizacion'])
+        if fecha_tentativa.tzinfo is None:
+            fecha_tentativa = fecha_tentativa.replace(tzinfo=timezone.utc)
+    except (ValueError, TypeError):
+        return {'mensaje': 'Formato de fecha no válido'}, 400
+
     if fecha_tentativa < fecha_actual:
         return {'mensaje': 'La fecha tentativa no puede ser anterior a la fecha actual'}, 400
+    
+    categoria_id = data.get('categoria_id')
+    if categoria_id:
+        try:
+            categoria_id = int(categoria_id)
+        except ValueError:
+            return {'mensaje': 'ID de categoría no válido'}, 400
 
-    nueva_tarea = Tarea(texto_area=data['texto_area'],fecha_creacion=fecha_actual, fecha_tentativa_finalizacion=fecha_tentativa,estado=data.get('estado', 'Sin Empezar'),usuario_id=data['usuario_id'],categoria_id=data.get('categoria_id'))
+        categoria = Categoria.query.get(categoria_id)
+        if not categoria:
+            return {'mensaje': 'Categoría no encontrada'}, 404
+    else:
+        categoria_id = None
+
+    nueva_tarea = Tarea(texto_area=data['texto_area'],fecha_creacion=fecha_actual, fecha_tentativa_finalizacion=fecha_tentativa,estado=data.get('estado', 'Sin Empezar'),usuario_id=data['usuario_id'],categoria_id=categoria_id)
     db.session.add(nueva_tarea)
     db.session.commit()
 

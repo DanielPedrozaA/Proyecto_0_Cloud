@@ -1,0 +1,84 @@
+.category-creator-page {
+    background: url("../assets/Background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-creator-container {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    width: 40%;
+    max-width: 500px;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.category-creator-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.category-creator-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-creator-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.category-creator-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+
+.category-creator-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.category-creator-button {
+    background-color: #45a049 !important;
+}
+
+.category-creator-button:hover {
+    background-color: #367e3a !important;
+}
+
+.category-cancel-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f44336;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.category-cancel-button:hover {
+    background-color: #d32f2f;
+}

@@ -25,11 +25,28 @@ const Dashboard = () => {
 
                 setUsuario(userResponse.data);
 
-                const tareasResponse = await api.get(`/usuarios/${userResponse.data.id}/tareas`, {
-                    headers: { Authorization: `Bearer ${token}` }
+                const [tareasResponse, categoriasResponse] = await Promise.all([
+                    api.get(`/usuarios/${userResponse.data.id}/tareas`, {
+                        headers: { Authorization: `Bearer ${token}` }
+                    }),
+                    api.get("/categorias", {
+                        headers: { Authorization: `Bearer ${token}` }
+                    })
+                ]);
+
+                // Crear un mapa de categorías por ID para una búsqueda rápida
+                const categoriasMap = {};
+                categoriasResponse.data.forEach((categoria) => {
+                    categoriasMap[categoria.id] = categoria.nombre;
                 });
 
-                setTareas(tareasResponse.data);
+                // Agregar el nombre de la categoría a cada tarea
+                const tareasConCategorias = tareasResponse.data.map((tarea) => ({
+                    ...tarea,
+                    categoria_nombre: tarea.categoria_id ? categoriasMap[tarea.categoria_id] : "Sin categoría"
+                }));
+
+                setTareas(tareasConCategorias);
             } catch (error) {
                 console.error("Error al obtener datos", error);
             }
@@ -39,16 +56,27 @@ const Dashboard = () => {
     }, [navigate]);
 
     const getEstadoColor = (estado) => {
+        let emoji;
         switch (estado) {
             case "Sin Empezar":
-                return "🔴";
+                emoji = "🔴";
+                break;
             case "En Proceso":
-                return "🟠";
+                emoji = "🟠";
+                break;
             case "Completado":
-                return "🟢";
+                emoji = "🟢";
+                break;
             default:
-                return "⚪";
+                emoji = "⚪";
         }
+
+        return (
+            <div className="estado-container">
+                <span className="estado-text">{estado}</span>
+                <span className="estado-dot">{emoji}</span>
+            </div>
+        );
     };
 
     return (
@@ -95,10 +123,15 @@ const Dashboard = () => {
                                 <tbody>
                                     {tareas.length > 0 ? (
                                         tareas.map((tarea) => (
-                                            <tr key={tarea.id} onClick={() => navigate(`/tareas/${tarea.id}`)} className="task-row">
+                                            <tr
+                                                key={tarea.id}
+                                                onClick={() => navigate(`/tareas/${tarea.id}`)}
+                                                className="task-row"
+                                                style={{ cursor: "pointer" }}
+                                            >
                                                 <td>{tarea.texto_area}</td>
                                                 <td>{new Date(tarea.fecha_tentativa_finalizacion).toLocaleDateString()}</td>
-                                                <td>{tarea.categoria || "Null"}</td>
+                                                <td>{tarea.categoria_nombre}</td> {/* Aquí estaba el error */}
                                                 <td className="estado-col">{getEstadoColor(tarea.estado)}</td>
                                             </tr>
                                         ))

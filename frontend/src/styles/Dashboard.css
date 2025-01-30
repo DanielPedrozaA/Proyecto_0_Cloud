@@ -81,6 +81,7 @@
     max-height: 75vh;
     overflow-y: auto;
     width: 100%;
+    border-radius: 10px;
 }
 
 .task-table {
@@ -92,8 +93,8 @@
 .task-table thead {
     position: sticky;
     top: 0;
-    background-color: (0, 18, 31, 60);
-    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
 }
 
 .task-row {
@@ -110,4 +111,20 @@
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
+}
+
+.estado-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.estado-text {
+    font-weight: bold;
+    color: white;
+}
+
+.estado-dot {
+    font-size: 18px;
 }
