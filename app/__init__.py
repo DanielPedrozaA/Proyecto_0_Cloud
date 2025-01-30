@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS 
 
 db = SQLAlchemy()
 jwt = JWTManager()
+cors = CORS()
 
 def create_app():
     app = Flask(__name__)
@@ -11,7 +13,8 @@ def create_app():
 
     db.init_app(app)
     jwt.init_app(app)
-
+    cors.init_app(app, resources={r"/*": {"origins": "*"}})
+    
     from app.routes.tarea_r import tarea_bp
     from app.routes.categoria_r import categoria_bp
     from app.routes.usuario_r import usuario_bp

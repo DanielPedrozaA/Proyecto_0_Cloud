@@ -1,0 +1,113 @@
+.dashboard-page {
+    background: url("../assets/Background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    width: 80%;
+    max-width: 1100px;
+    height: 90vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section-title {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: left;
+    display: block;
+    width: 90%;
+}
+
+.btn-task {
+    background-color: #4100C3 !important;
+    border: none;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.btn-category {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.user-info {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.user-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.user-name {
+    color: white;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    height: 80vh;
+    padding: 15px;
+}
+
+.task-table-container {
+    max-height: 75vh;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.task-table {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.task-table thead {
+    position: sticky;
+    top: 0;
+    background-color: (0, 18, 31, 60);
+    z-index: 2;
+}
+
+.task-row {
+    cursor: pointer;
+}
+
+.estado-col {
+    text-align: center;
+}
+
+.task-list .title {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
