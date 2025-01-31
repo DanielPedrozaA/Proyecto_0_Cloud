@@ -37,7 +37,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre_usuario\": \"testuser\",\r\n    \"contrasenia\": \"testpassword\",\r\n    \"imagen_perfil\": \"https://example.com/image.jpg\"\r\n}",
+							"raw": "{\r\n    \"nombre_usuario\": \"TestUser\",\r\n    \"contrasenia\": \"Testpassword\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -68,7 +68,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nombre_usuario\": \"testuser\",\r\n    \"contrasenia\": \"testpassword\",\r\n    \"imagen_perfil\": \"https://example.com/image.jpg\"\r\n}",
+									"raw": "{\r\n    \"nombre_usuario\": \"TestUser\",\r\n    \"contrasenia\": \"Testpassword\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -127,7 +127,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre_usuario\": \"testuser\",\r\n    \"imagen_perfil\": \"https://example.com/image.jpg\"\r\n}",
+							"raw": "{\r\n    \"nombre_usuario\": \"TestUser\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -186,6 +186,186 @@
 					]
 				},
 				{
+					"name": "Crear Usuario Con Usuario Vacio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Code 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje Correcto\", function () {\r",
+									"    var data = pm.response.json()\r",
+									"    pm.expect(data.mensaje).to.eql(\"El nombre de usuario no puede estar vacío\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre_usuario\": \"\",\r\n    \"contrasenia\": \"Testpassword\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Usuario Con Usuario Vacio",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre_usuario\": \"\",\r\n    \"contrasenia\": \"Testpassword\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/usuarios",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"El nombre de usuario no puede estar vacío\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Usuario Con Contraseña Vacia",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Code 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje Correcto\", function () {\r",
+									"    var data = pm.response.json()\r",
+									"    pm.expect(data.mensaje).to.eql(\"La contraseña no puede estar vacía\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre_usuario\": \"TestUser\",\r\n    \"contrasenia\": \"\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Usuario Con Contraseña Vacia",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre_usuario\": \"TestUser\",\r\n    \"contrasenia\": \"\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/usuarios",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"La contraseña no puede estar vacía\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Crear Usuario Ya Existente",
 					"event": [
 						{
@@ -211,7 +391,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre_usuario\": \"testuser\",\r\n    \"contrasenia\": \"testpassword\",\r\n    \"imagen_perfil\": \"https://example.com/image.jpg\"\r\n}",
+							"raw": "{\r\n    \"nombre_usuario\": \"TestUser\",\r\n    \"contrasenia\": \"Testpassword\",\r\n    \"imagen_perfil\": \"https://i.pinimg.com/736x/a7/c3/61/a7c3611972e34f1c778f95c8fe393b4e.jpg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -303,7 +483,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre_usuario\": \"testuser\",\r\n    \"contrasenia\": \"testpassword\"\r\n}",
+							"raw": "{\r\n    \"nombre_usuario\": \"TestUser\",\r\n    \"contrasenia\": \"Testpassword\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -538,6 +718,57 @@
 							"body": "{\r\n    \"mensaje\": \"Credenciales inválidas\"\r\n}"
 						}
 					]
+				},
+				{
+					"name": "Get Usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Code 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Contenido Requerido\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"nombre_usuario\")\r",
+									"    pm.expect(jsonData).to.have.property(\"imagen_perfil\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"me"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -693,13 +924,13 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Crear Categoria 2",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"Universidad\",\r\n    \"descripcion\": \"Todos los trabajos universitarios o relacionados con la universidad\"\r\n}",
+									"raw": "{\r\n    \"nombre\": \"Hogar\",\r\n    \"descripcion\": \"Todos los trabajos relacionados con el mantenimiento de la casa\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -787,13 +1018,13 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Crear Categoria 3",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"Universidad\",\r\n    \"descripcion\": \"Todos los trabajos universitarios o relacionados con la universidad\"\r\n}",
+									"raw": "{\r\n    \"nombre\": \"Ejercicio\",\r\n    \"descripcion\": \"Todos los trabajos relacionados con entrenamiento\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -881,13 +1112,13 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Crear Categoria Solocitud Incompleta",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"Universidad\",\r\n    \"descripcion\": \"Todos los trabajos universitarios o relacionados con la universidad\"\r\n}",
+									"raw": "{\r\n    \"descripcion\": \"Todos los trabajos universitarios o relacionados con la universidad\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -975,7 +1206,7 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Crear Categoria Existente",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1072,7 +1303,7 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Obtener Categoria",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1167,7 +1398,7 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Eliminar Categoria",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1262,7 +1493,7 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Eliminar Categoria No existente",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1337,7 +1568,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"texto_area\": \"Levantar Peso Pesado\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-01-31T01:00:00Z\",\r\n    \"categoria_id\": 3\r\n}",
+							"raw": "{\r\n    \"texto_area\": \"Levantar Peso Pesado\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-03-31T01:00:00Z\",\r\n    \"categoria_id\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1356,7 +1587,7 @@
 					},
 					"response": [
 						{
-							"name": "Crear Tarea",
+							"name": "Crear Tarea Con Categoria",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1396,7 +1627,7 @@
 					]
 				},
 				{
-					"name": "Eliminar Categoria Copy",
+					"name": "Eliminar Categoria Con Tarea Asociada",
 					"event": [
 						{
 							"listen": "test",
@@ -1451,7 +1682,7 @@
 					},
 					"response": [
 						{
-							"name": "Crear Categoria",
+							"name": "Eliminar Categoria Con Tarea Asociada",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1531,7 +1762,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"texto_area\": \"Mi primera tarea\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-01-31T01:00:00Z\",\r\n    \"categoria_id\": null\r\n}",
+							"raw": "{\r\n    \"texto_area\": \"Mi primera tarea\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-03-31T01:00:00Z\",\r\n    \"categoria_id\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1680,6 +1911,100 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"mensaje\": \"Faltan datos obligatorios\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Tarea Formato De Fecha Erroneo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Code 201\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje Correcto\", function() {\r",
+									"    var data = pm.response.json()\r",
+									"    pm.expect(data.mensaje).to.eql(\"Formato de fecha no válido\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"texto_area\": \"Mi primera tarea\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-011-31T01:00:00Z\",\r\n    \"categoria_id\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tareas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"texto_area\": \"Mi primera tarea\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-01-31T15:00:00Z\",\r\n    \"categoria_id\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tareas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"Tarea creada exitosamente\"\n}"
 						}
 					]
 				},
@@ -1868,6 +2193,100 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"mensaje\": \"La fecha tentativa no puede ser anterior a la fecha actual\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Tarea Categoria Inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Code 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje Correcto\", function() {\r",
+									"    var data = pm.response.json()\r",
+									"    pm.expect(data.mensaje).to.eql(\"Categoría no encontrada\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"texto_area\": \"Mi primera tarea\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-03-31T01:00:00Z\",\r\n    \"categoria_id\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tareas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"texto_area\": \"Mi primera tarea\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-01-31T15:00:00Z\",\r\n    \"categoria_id\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tareas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"Tarea creada exitosamente\"\n}"
 						}
 					]
 				},
@@ -2294,6 +2713,101 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2025-02-01T01:00:00Z\",\r\n    \"categoria_id\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tareas/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tareas",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea Fecha Tentativa Vieja",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"texto_area\": \"Mi primera tarea\",\r\n    \"usuario_id\": 1,\r\n    \"fecha_tentativa_finalizacion\": \"2025-01-31T15:00:00Z\",\r\n    \"categoria_id\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tareas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"La fecha tentativa no puede ser anterior a la fecha actual\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizar Tarea Con Categoria Invalida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Code 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje Correcto\", function() {\r",
+									"    var data = pm.response.json()\r",
+									"    pm.expect(data.mensaje).to.eql(\"ID de categoría no válido\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2025-02-01T01:00:00Z\",\r\n    \"categoria_id\": \"a\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
