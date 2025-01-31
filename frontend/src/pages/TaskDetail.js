@@ -39,7 +39,6 @@ const TaskDetail = () => {
                     estado: response.data.estado
                 });
 
-                // Obtener categorías para el dropdown
                 const categoriasResponse = await api.get("/categorias", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
