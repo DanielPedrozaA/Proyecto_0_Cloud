@@ -15,7 +15,6 @@ const TaskDetailForm = ({ taskId, onUpdate, error, mensajeExito }) => {
             try {
                 const token = localStorage.getItem("token");
 
-                // Obtener detalles de la tarea
                 const tareaResponse = await api.get(`/tareas/${taskId}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -26,7 +25,6 @@ const TaskDetailForm = ({ taskId, onUpdate, error, mensajeExito }) => {
                 setEstado(tarea.estado);
                 setCategoriaId(tarea.categoria_id || "");
 
-                // Obtener categorías
                 const categoriasResponse = await api.get("/categorias", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -51,7 +49,6 @@ const TaskDetailForm = ({ taskId, onUpdate, error, mensajeExito }) => {
             {error && <Alert variant="danger">{error}</Alert>}
             {mensajeExito && <Alert variant="success">{mensajeExito}</Alert>}
 
-            {/* Descripción */}
             <Form.Group>
                 <Form.Label>Descripción</Form.Label>
                 <Form.Control
@@ -62,7 +59,6 @@ const TaskDetailForm = ({ taskId, onUpdate, error, mensajeExito }) => {
                 />
             </Form.Group>
 
-            {/* Fecha Tentativa */}
             <Form.Group className="mt-3">
                 <Form.Label>Fecha Tentativa de Finalización</Form.Label>
                 <Form.Control
@@ -73,7 +69,6 @@ const TaskDetailForm = ({ taskId, onUpdate, error, mensajeExito }) => {
                 />
             </Form.Group>
 
-            {/* Estado */}
             <Form.Group className="mt-3">
                 <Form.Label>Estado</Form.Label>
                 <Form.Control
@@ -87,7 +82,6 @@ const TaskDetailForm = ({ taskId, onUpdate, error, mensajeExito }) => {
                 </Form.Control>
             </Form.Group>
 
-            {/* Categoría */}
             <Form.Group className="mt-3">
                 <Form.Label>Categoría</Form.Label>
                 <Form.Control
@@ -104,7 +98,6 @@ const TaskDetailForm = ({ taskId, onUpdate, error, mensajeExito }) => {
                 </Form.Control>
             </Form.Group>
 
-            {/* Botones */}
             <div className="task-detail-buttons mt-4">
                 <Button type="submit" className="task-detail-save">Guardar Cambios</Button>
                 <Button variant="secondary" className="task-detail-cancel" onClick={() => window.history.back()}>Cancelar</Button>

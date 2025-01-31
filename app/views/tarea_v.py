@@ -96,13 +96,20 @@ def actualizar_tarea(tarea_id, data):
 
     if 'categoria_id' in data:
         categoria_id = data['categoria_id']
-        categoria = Categoria.query.get(categoria_id)
-        if not categoria:
-            return {'mensaje': f'Categoría con ID {categoria_id} no encontrada'}, 404
-        tarea.categoria_id = categoria_id
+
+        if categoria_id == "" or categoria_id is None:
+            tarea.categoria_id = None
+        else:
+            try:
+                categoria_id = int(categoria_id)
+                categoria = Categoria.query.get(categoria_id)
+                if not categoria:
+                    return {'mensaje': f'Categoría con ID {categoria_id} no encontrada'}, 404
+                tarea.categoria_id = categoria_id
+            except ValueError:
+                return {'mensaje': 'ID de categoría no válido'}, 400
 
     db.session.commit()
-
     return {'mensaje': 'Tarea actualizada exitosamente'}, 200
 
 # Eliminar Tarea

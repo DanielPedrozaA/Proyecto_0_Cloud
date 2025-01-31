@@ -18,7 +18,6 @@ const CategoryForm = ({ onSubmit, error, mensajeExito }) => {
             {error && <Alert variant="danger">{error}</Alert>}
             {mensajeExito && <Alert variant="success">{mensajeExito}</Alert>}
 
-            {/* Nombre de la Categoría */}
             <Form.Group>
                 <Form.Label className="category-creator-label">Nombre</Form.Label>
                 <Form.Control
@@ -31,7 +30,6 @@ const CategoryForm = ({ onSubmit, error, mensajeExito }) => {
                 />
             </Form.Group>
 
-            {/* Descripción */}
             <Form.Group className="mt-3">
                 <Form.Label className="category-creator-label">Descripción</Form.Label>
                 <Form.Control
@@ -44,7 +42,6 @@ const CategoryForm = ({ onSubmit, error, mensajeExito }) => {
                 />
             </Form.Group>
 
-            {/* Botones */}
             <div className="category-buttons mt-4">
                 <Button type="submit" className="category-creator-button">Crear</Button>
                 <Button variant="danger" className="category-cancel-button" onClick={() => window.history.back()}>Cancelar</Button>

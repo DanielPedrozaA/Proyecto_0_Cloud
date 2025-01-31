@@ -8,7 +8,6 @@ const RegisterForm = () => {
     const [contrasenia, setContrasenia] = useState("");
     const [imagenPerfil, setImagenPerfil] = useState("");
 
-    // Manejo de errores
     const [errorGeneral, setErrorGeneral] = useState("");
     const [errorUsuario, setErrorUsuario] = useState("");
     const [errorContrasenia, setErrorContrasenia] = useState("");
@@ -23,7 +22,6 @@ const RegisterForm = () => {
 
         let hasError = false;
 
-        // Validaciones previas
         if (nombreUsuario.trim() === "") {
             setErrorUsuario("El nombre de usuario no puede estar vacío.");
             hasError = true;
@@ -34,7 +32,7 @@ const RegisterForm = () => {
             hasError = true;
         }
 
-        if (hasError) return; // No enviar solicitud si hay errores
+        if (hasError) return;
 
         try {
             const response = await api.post("/usuarios", {
@@ -45,7 +43,7 @@ const RegisterForm = () => {
 
             if (response.status === 201) {
                 alert("Usuario registrado exitosamente!");
-                navigate("/"); // Redirige a login después del registro
+                navigate("/");
             }
         } catch (error) {
             if (error.response) {
@@ -68,7 +66,6 @@ const RegisterForm = () => {
                 <Col md={4} className="login-box">
                     <h3 className="text-light text-center">Registro</h3>
 
-                    {/* Mensaje de error general */}
                     {errorGeneral && <p className="text-danger text-center">{errorGeneral}</p>}
 
                     <Form onSubmit={handleRegister}>

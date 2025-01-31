@@ -34,13 +34,11 @@ const Dashboard = () => {
                     })
                 ]);
 
-                // Crear un mapa de categorías por ID para una búsqueda rápida
                 const categoriasMap = {};
                 categoriasResponse.data.forEach((categoria) => {
                     categoriasMap[categoria.id] = categoria.nombre;
                 });
 
-                // Agregar el nombre de la categoría a cada tarea
                 const tareasConCategorias = tareasResponse.data.map((tarea) => ({
                     ...tarea,
                     categoria_nombre: tarea.categoria_id ? categoriasMap[tarea.categoria_id] : "Sin categoría"

@@ -17,7 +17,6 @@ const LoginForm = () => {
         setErrorContrasenia("");
         setErrorGeneral("");
 
-        // Validaciones locales antes de enviar la solicitud
         let hasError = false;
 
         if (nombreUsuario.trim() === "") {
@@ -30,7 +29,7 @@ const LoginForm = () => {
             hasError = true;
         }
 
-        if (hasError) return; // No hacer la petición si hay errores locales
+        if (hasError) return;
 
         try {
             const response = await api.post("/usuarios/iniciar-sesion", {
@@ -39,11 +38,9 @@ const LoginForm = () => {
             });
 
             if (response.status === 200) {
-                // Guardar token y user_id en localStorage
                 localStorage.setItem("token", response.data.access_token);
                 localStorage.setItem("user_id", response.data.user_id);
 
-                // Redirigir al Dashboard
                 navigate("/dashboard");
             }
         } catch (error) {
@@ -65,7 +62,6 @@ const LoginForm = () => {
                 <Col md={4} className="login-box">
                     <h3 className="text-light text-center">Iniciar Sesión</h3>
 
-                    {/* Mensaje de error general */}
                     {errorGeneral && <p className="text-danger text-center">{errorGeneral}</p>}
 
                     <Form onSubmit={handleLogin}>

@@ -35,7 +35,6 @@ def eliminar_categoria(categoria_id):
     if categoria.clasifica:
         return {'mensaje': 'No se puede eliminar la categoría porque tiene tareas asociadas'}, 400
 
-    # Eliminar la categoría
     db.session.delete(categoria)
     db.session.commit()
 
