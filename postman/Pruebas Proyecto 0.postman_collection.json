@@ -2327,7 +2327,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2025-02-01T01:00:00Z\",\r\n    \"categoria_id\": 2\r\n}\r\n",
+							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2026-02-01T01:00:00Z\",\r\n    \"categoria_id\": 2\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2424,7 +2424,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2025-02-01T01:00:00Z\",\r\n    \"categoria_id\": 1 \r\n}\r\n",
+							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2026-02-01T01:00:00Z\",\r\n    \"categoria_id\": 1 \r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2521,7 +2521,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En La Nube\",\r\n    \"fecha_tentativa_finalizacion\": \"2025-02-01T01:00:00Z\",\r\n    \"categoria_id\": 2\r\n}\r\n",
+							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En La Nube\",\r\n    \"fecha_tentativa_finalizacion\": \"2026-02-01T01:00:00Z\",\r\n    \"categoria_id\": 2\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2712,7 +2712,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2025-02-01T01:00:00Z\",\r\n    \"categoria_id\": 1000\r\n}",
+							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2026-02-01T01:00:00Z\",\r\n    \"categoria_id\": 1000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2807,7 +2807,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2025-02-01T01:00:00Z\",\r\n    \"categoria_id\": \"a\"\r\n}",
+							"raw": "{\r\n    \"texto_area\": \"Tarea actualizada\",\r\n    \"estado\": \"En Proceso\",\r\n    \"fecha_tentativa_finalizacion\": \"2026-02-01T01:00:00Z\",\r\n    \"categoria_id\": \"a\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
