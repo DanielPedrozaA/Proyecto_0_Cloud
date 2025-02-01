@@ -29,7 +29,7 @@ Para ejecutar la aplicación:
 docker-compose up --build  
 
 Esto iniciará:
-- Backend en http://localhost:8080
+- Backend en http://localhost:5000
 - Frontend en http://localhost:3000
 Base de datos PostgreSQL en localhost:5432
 
